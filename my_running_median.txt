@@ -1,0 +1,38 @@
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Median
+{
+  public Median()
+  {
+    try (Scanner scanner = new Scanner(Paths.get("/Users/Path/To/Input.txt")))
+    {
+      int numberOfElements = scanner.nextInt();
+
+      int[] nums = new int[numberOfElements];
+
+      for (int a = 0; a < numberOfElements; ++a)
+      {
+        nums[a] = scanner.nextInt();
+      }
+
+      Arrays.sort(nums);
+
+      int medianIndex = ((numberOfElements % 2 == 0 ?
+        numberOfElements : numberOfElements + 1) >> 1) - 1;
+
+      System.out.println(nums[medianIndex]);
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  public static void main(String[] args)
+  {
+    new Median();
+  }
+}
